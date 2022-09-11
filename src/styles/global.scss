@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+input{
+  outline: none;
+}
+
+// ----------- Container -------------- //
+.wrapper{
+  @apply max-w-7xl mx-auto px-4 xl:px-0;
+}
+
+// ---------- sizing ---------- //
+h1,
+.heading{
+  @apply text-4xl text-gray m-0 leading-none;
+}
+
+h2,
+.subheading{
+  @apply text-base text-gray m-0 leading-none;
+}
+
+// ----------- Buttons ----------- //
+.btn{
+  @apply px-8 py-2 rounded-md text-white;
+}
+.btn-primary{
+  @extend .btn;
+}
+.btn-secondary{
+  @extend .btn;
+}
+
+.rounded-lg-img img{
+    border-radius: 0.5rem;
+}
+.rounded-full-img img{
+    border-radius: 9999px;
+}
+.rounded-l-lg-img img{
+    border-top-left-radius: 0.5rem; 
+    border-bottom-left-radius: 0.5rem,; 
+}
+
