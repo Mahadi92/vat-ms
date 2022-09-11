@@ -7,27 +7,15 @@ import useWindowSize from "@/hooks/useWindowSize";
 
 const navData = [
   {
-    label: "Home",
+    label: "Dashboard",
     link: "/",
   },
   {
-    label: "About US",
+    label: "Create",
     link: "/",
   },
   {
-    label: "Services",
-    link: "/",
-  },
-  {
-    label: "Portfolio",
-    link: "/",
-  },
-  {
-    label: "Contact Us",
-    link: "/",
-  },
-  {
-    label: "Support",
+    label: "Posts List",
     link: "/",
   },
 ];
@@ -45,29 +33,15 @@ const Navbar = () => {
   return (
     <>
       {/* ----------- Desktop Navbar ----------- */}
-      <nav className="fixed top-0 left-0 w-full hidden md:flex justify-center items-center py-10">
+      <nav className="fixed top-0 left-0 w-full hidden md:flex justify-start border-b-2 border-primary items-center px-5 py-5">
         <ul className="nav_items_grp">
-          {navData.slice(0, Math.ceil(navData.length / 2)).map((item, i) => {
+          {navData.map((item, i) => {
             return (
               <li key={i}>
                 <Link href="/" passHref>
                   <a>{item.label}</a>
                 </Link>
               </li>
-            );
-          })}
-        </ul>
-        <Link href="/" passHref>
-          <a className="px-10 lg:px-20">
-            <BrandIco />
-          </a>
-        </Link>
-        <ul className="nav_items_grp">
-          {navData.slice(Math.ceil(navData.length / 2)).map((item, i) => {
-            return (
-              <Link href="/" key={i} passHref>
-                <a>{item.label}</a>
-              </Link>
             );
           })}
         </ul>

@@ -8,20 +8,17 @@ const Login = () => {
   return (
     <main className="p-20 m-auto h-screen">
       <div className="w-full h-full grid lg:grid-cols-2 gap-5 rounded-lg shadow-xl">
-        <section className="hidden lg:flex justify-center items-center w-full h-full">
-          <div className="w-full h-auto">
-            <Image
-              src="/static/images/login_bg.jpg"
-              layout="responsive"
-              width="100%"
-              height="100%"
-              objectFit="cover"
-              alt="Login"
-            />
-          </div>
+        <section className="relative hidden lg:flex justify-center items-center w-full h-full">
+          <Image
+            src="/static/images/login_bg.jpg"
+            width="500"
+            height="500"
+            objectFit="cover"
+            alt="Login"
+          />
         </section>
         <section className="w-full flex items-center justify-center">
-          <div className="w-full px-10">
+          <div className="w-full pl-20 lg:pl-0 pr-20">
             <div className="grid gap-4 pb-8">
               <h1 className="font-semibold text-gray-600">Login</h1>
               <p className="text-gray-600">
