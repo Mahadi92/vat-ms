@@ -1,4 +1,5 @@
 import type { AppProps } from "next/app";
+import "antd/dist/antd.css";
 import "@/styles/global.scss";
 import "@/styles/styles.scss";
 

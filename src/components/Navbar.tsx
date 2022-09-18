@@ -4,6 +4,7 @@ import BrandIco from "./icons/BrandIco";
 import { IoMenu } from "react-icons/io5";
 import { IoMdClose } from "react-icons/io";
 import useWindowSize from "@/hooks/useWindowSize";
+import { useRouter } from "next/router";
 
 const navData = [
   {
@@ -12,11 +13,11 @@ const navData = [
   },
   {
     label: "Create",
-    link: "/",
+    link: "/create",
   },
   {
     label: "Posts List",
-    link: "/",
+    link: "/list",
   },
 ];
 
@@ -24,6 +25,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const windowSize = useWindowSize();
+  const router = useRouter();
 
   useEffect(() => {
     if (windowSize.width < 768) {
@@ -33,18 +35,26 @@ const Navbar = () => {
   return (
     <>
       {/* ----------- Desktop Navbar ----------- */}
-      <nav className="fixed top-0 left-0 w-full hidden md:flex justify-start border-b-2 border-primary items-center px-5 py-5">
-        <ul className="nav_items_grp">
-          {navData.map((item, i) => {
-            return (
-              <li key={i}>
-                <Link href="/" passHref>
-                  <a>{item.label}</a>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+      <nav className="sticky top-0 left-0 border-b-2 border-primary bg-white z-50">
+        <div className="wrapper w-full hidden md:flex justify-start items-center px-5 py-5">
+          <ul className="nav_items_grp">
+            {navData.map((item, i) => {
+              return (
+                <li key={i}>
+                  <Link href={item.link} passHref>
+                    <a
+                      className={`${
+                        router.pathname === item.link && "text-primary"
+                      }`}
+                    >
+                      {item.label}
+                    </a>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </nav>
 
       {/* ----------- Mobile Navbar ----------- */}

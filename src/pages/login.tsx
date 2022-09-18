@@ -7,7 +7,7 @@ const Login = () => {
 
   return (
     <main className="p-20 m-auto h-screen">
-      <div className="w-full h-full grid lg:grid-cols-2 gap-5 rounded-lg shadow-xl">
+      <div className="w-full h-full grid lg:grid-cols-2 gap-5 rounded-lg border">
         <section className="relative hidden lg:flex justify-center items-center w-full h-full">
           <Image
             src="/static/images/login_bg.jpg"
@@ -49,7 +49,7 @@ const Login = () => {
                 />
               </div>
               <div>
-                <button className="bg-primary btn px-10 font-semibold">
+                <button className="bg-primary text-white btn px-10 font-semibold">
                   Login
                 </button>
               </div>

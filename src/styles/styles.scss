@@ -1,6 +1,5 @@
 
 // -------------- Navbar style -------------- //
 .nav_items_grp{
-  @apply flex items-center gap-5 text-gray-500 font-semibold;
-
+  @apply flex justify-start items-center gap-5 text-gray-500 font-semibold;
 }

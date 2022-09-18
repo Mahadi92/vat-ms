@@ -30,13 +30,15 @@ h2,
 
 // ----------- Buttons ----------- //
 .btn{
-  @apply px-8 py-2 rounded-md text-white;
+  @apply px-8 py-2 rounded-md;
 }
 .btn-primary{
   @extend .btn;
+  @apply bg-primary/80 hover:bg-primary/90 text-white;
 }
 .btn-secondary{
   @extend .btn;
+  @apply bg-secondary/80 hover:bg-secondary/90 text-white;
 }
 
 .rounded-lg-img img{
@@ -50,3 +52,9 @@ h2,
     border-bottom-left-radius: 0.5rem,; 
 }
 
+.bg-primary-gradient{
+  background-color: #8EC5FC;
+  background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+
+
+}
