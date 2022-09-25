@@ -58,7 +58,7 @@ const Navbar = () => {
       </nav>
 
       {/* ----------- Mobile Navbar ----------- */}
-      <nav className="fixed top-0 left-0 w-full flex justify-between md:hidden py-5 px-4 transform duration-300">
+      <nav className="fixed top-0 left-0 w-full flex justify-between md:hidden py-5 px-4 transform duration-300 z-50">
         <Link href="/" passHref>
           <a className="">
             <BrandIco size={"40"} />
@@ -73,7 +73,7 @@ const Navbar = () => {
             isOpen
               ? "absolute translate-x-0"
               : "absolute left-0 -translate-x-80"
-          } px-10 pt-16 transform duration-300 bg-secondary/10 z-20`}
+          } px-10 pt-16 transform duration-300 text-white bg-secondary/80 z-20`}
         >
           <button
             onClick={() => setIsOpen(false)}

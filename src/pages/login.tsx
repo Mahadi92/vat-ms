@@ -1,9 +1,35 @@
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { FiLock, FiMail } from "react-icons/fi";
 
 const Login = () => {
-  const [isShowPass, setIsShowPass] = useState(false);
+  const [loginData, setLoginData] = useState({ email: "", password: "" });
+
+  const route = useRouter();
+
+  const handleChange = (e: any) => {
+    e.preventDefault();
+    setLoginData({ ...loginData, ...{ [e.target.name]: e.target.value } });
+  };
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    if (loginData.email && loginData.password) {
+      if (
+        loginData.email === "admin@gmail.com" &&
+        loginData.password === "admin"
+      ) {
+        toast.success("Login Successfully");
+        route.push("/");
+      } else {
+        toast.error("Incorrect Email or Password");
+      }
+    } else {
+      toast.error("Email or Password is missing");
+    }
+  };
 
   return (
     <main className="p-20 m-auto h-screen">
@@ -31,6 +57,9 @@ const Login = () => {
                   <FiMail size={20} />
                 </span>
                 <input
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
                   type="email"
                   className="w-full h-full rounded-lg pl-10 text-lg text-gray-500"
                   name="email"
@@ -42,6 +71,9 @@ const Login = () => {
                   <FiLock size={20} />
                 </span>
                 <input
+                  onChange={(e) => {
+                    handleChange(e);
+                  }}
                   type={"password"}
                   className="w-full h-full rounded-lg pl-10 text-lg"
                   name="password"
@@ -49,7 +81,11 @@ const Login = () => {
                 />
               </div>
               <div>
-                <button className="bg-primary text-white btn px-10 font-semibold">
+                <button
+                  onClick={(e) => handleSubmit(e)}
+                  type="submit"
+                  className="bg-primary text-white btn px-10 font-semibold"
+                >
                   Login
                 </button>
               </div>

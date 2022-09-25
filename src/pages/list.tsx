@@ -13,40 +13,38 @@ const { Column } = Table;
 const List = () => {
   const [productsData, setProductsData] = useState(null || []);
 
-  useEffect(() => {
-    if (AppStorage.get("productsData")) {
-      const data = AppStorage.get("productsData");
-      //@ts-ignore
-      setProductsData(productsData);
+  const { isLoading, mutate } = useMutation(
+    (payload: any) => {
+      const data = axios.post(`${apiPrefix}/create`, {
+        ...payload,
+      });
+      return data;
+    },
+    {
+      onSuccess: (data, variables, context) => {
+        // refetch();
+        toast.success("Category successfully created");
+      },
+      onError: (error, variables, context) => {
+        // An error happened!
+        toast.error("Category not created");
+        console.log("An error >>", error);
+      },
     }
-  }, [data]);
+  );
 
-  // const { isLoading, mutate } = useMutation(
-  //   (payload: any) => {
-  //     const data = axios.post(`${apiPrefix}/create`, {
-  //       payload,
-  //     });
-  //     return data;
-  //   },
-  //   {
-  //     onSuccess: (data, variables, context) => {
-  //       // refetch();
-  //       toast.success("Category successfully created");
-  //     },
-  //     onError: (error, variables, context) => {
-  //       // An error happened!
-  //       toast.error("Category not created");
-  //       console.log("An error >>", error);
-  //     },
-  //   }
-  // );
-
+  const handlesubmit = () => {
+    mutate(data[0]);
+    // data.map((item) => {
+    //   mutate(item);
+    // });
+  };
   return (
     <DefaultLayout>
       <div className="wrapper py-20">
         {data && (
           <Table dataSource={data || []}>
-            <Column title="Product Name" dataIndex="pName" key="pName" />
+            <Column title="Product Name" dataIndex="name" key="name" />
             <Column title="HS Code" dataIndex="hsCode" key="hsCode" />
             <Column title="Location" dataIndex="location" key="location" />
             <Column
@@ -76,7 +74,14 @@ const List = () => {
               align="center"
               key="hsCode"
               render={(hsCode) => {
-                return <button className="btn-primary">Purchase</button>;
+                return (
+                  <button
+                    onClick={() => handlesubmit()}
+                    className="btn-primary"
+                  >
+                    Purchase
+                  </button>
+                );
               }}
             />
             <Column
