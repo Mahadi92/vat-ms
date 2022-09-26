@@ -8,6 +8,7 @@ import { useMutation } from "react-query";
 import axios from "axios";
 import apiPrefix from "@/api/ApiPrefix";
 import toast from "react-hot-toast";
+import data from "@/store/DummyData";
 
 const validationSchema = yup.object({
   name: yup.string().required().label("Name"),
@@ -48,8 +49,21 @@ const Create = () => {
     resolver: yupResolver(validationSchema),
   });
 
+  // {
+  //     name: "Red Cod Fillets - 225g",
+  //     hsCode: "0268-1517",
+  //     price: 4243,
+  //     vat: 15,
+  //     quantity: 7,
+  //     location: "38035 Novick Alley",
+  //     create_at: "2022-02-04T09:14:29Z",
+  //   }
+
   const handleOnSubmit = (payload: any) => {
-    console.log(">>>>>>>>>>>>>>>>>", payload);
+    var newDate = new Date("October 15, 1996 05:35:32");
+    var isoDate = newDate.toISOString();
+    const payloadData = { ...payload, create_at: isoDate };
+    data.unshift(payloadData);
   };
   return (
     <DefaultLayout>

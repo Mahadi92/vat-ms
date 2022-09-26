@@ -68,7 +68,7 @@ const List = () => {
                 return <span>{vat}%</span>;
               }}
             />
-            <Column
+            {/* <Column
               title="Purchase"
               dataIndex="hsCode"
               align="center"
@@ -83,7 +83,7 @@ const List = () => {
                   </button>
                 );
               }}
-            />
+            /> */}
             <Column
               title="Sale"
               dataIndex="hsCode"
@@ -100,10 +100,7 @@ const List = () => {
               key="hsCode"
               render={(hsCode) => {
                 return (
-                  <button
-                    className="text-primary disabled:text-primary/60 disabled:cursor-not-allowed"
-                    disabled
-                  >
+                  <button className="text-primary disabled:text-primary/60 disabled:cursor-not-allowed">
                     Edit
                   </button>
                 );
@@ -116,10 +113,7 @@ const List = () => {
               key="hsCode"
               render={(hsCode) => {
                 return (
-                  <button
-                    className="text-red-500 hover:text-red-600 disabled:text-red-300 disabled:cursor-not-allowed"
-                    disabled
-                  >
+                  <button className="text-red-500 hover:text-red-600 disabled:text-red-300 disabled:cursor-not-allowed">
                     Delete
                   </button>
                 );
